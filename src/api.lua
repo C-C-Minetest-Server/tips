@@ -20,6 +20,7 @@
 ]]
 
 local _int = tips.internal
+local S = _int.S
 local logger = _int.logger:sublogger("api")
 
 tips.registered_tips = {}
