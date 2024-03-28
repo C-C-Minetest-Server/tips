@@ -19,6 +19,9 @@
     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 ]]
 
+local _int = tips.internal
+local logger = _int.logger:sublogger("api")
+
 tips.registered_tips = {}
 function tips.register_tips(id, tips_string)
     tips.registered_tips[id] = tips_string
@@ -35,6 +38,7 @@ function tips.unlock_tips_no_send(name, id)
         tips.data[name] = {}
     end
     tips.data[name][id] = true
+    logger:action("Unlocked tip " .. id .. " for " .. name)
 end
 
 function tips.unlock_tips(name, id)
@@ -45,5 +49,6 @@ function tips.unlock_tips(name, id)
     if not tips.data[name][id] then
         tips.send_tips(name, id)
         tips.data[name][id] = true
+        logger:action("Sent and unlocked tip " .. id .. " for " .. name)
     end
 end
