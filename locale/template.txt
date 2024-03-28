@@ -1,0 +1,5 @@
+# textdomain: tips
+
+##[ .cdb_translations.lua ]##
+Tips=
+Send tips to newcomers=
