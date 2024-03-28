@@ -3,3 +3,6 @@
 ##[ .cdb_translations.lua ]##
 Tips=
 Send tips to newcomers=
+
+##[ src/api.lua ]##
+[tips] @1=
