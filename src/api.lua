@@ -29,8 +29,8 @@ function tips.register_tips(id, tips_string)
 end
 
 function tips.send_tips(name, id)
-    if minetest.get_player_by_name(name) and tips.registered_tips[id] then
-        minetest.chat_send_player(name, minetest.colorize("#56d9dd", S("[tips] @1", tips.registered_tips[id])))
+    if core.get_player_by_name(name) and tips.registered_tips[id] then
+        core.chat_send_player(name, core.colorize("#56d9dd", S("[tips] @1", tips.registered_tips[id])))
     end
 end
 

@@ -22,9 +22,9 @@
 tips = {}
 tips.internal = {}
 tips.internal.logger = logging.logger("tips")
-tips.internal.S = minetest.get_translator("tips")
+tips.internal.S = core.get_translator("tips")
 
-local MP = minetest.get_modpath("tips")
+local MP = core.get_modpath("tips")
 for _, name in ipairs({
     "storage",
     "api",

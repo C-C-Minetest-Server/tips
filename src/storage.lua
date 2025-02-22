@@ -22,14 +22,14 @@
 local _int = tips.internal
 local logger = _int.logger:sublogger("storage")
 
-local save_dir = minetest.get_worldpath() .. "/tips.lua"
+local save_dir = core.get_worldpath() .. "/tips.lua"
 
 -- Load save file
 do
     local f, err = io.open(save_dir, "r")
     if f then
         local d = f:read("*a")
-        tips.data = minetest.deserialize(d, true)
+        tips.data = core.deserialize(d, true)
         if not tips.data then
             logger:warning(("Failed to load %s, using empty data."):format(
                 save_dir
@@ -46,16 +46,16 @@ end
 
 function tips.save_data()
     logger:action("Saving tips data")
-    local data = minetest.serialize(tips.data)
-    minetest.safe_file_write(save_dir, data)
+    local data = core.serialize(tips.data)
+    core.safe_file_write(save_dir, data)
 end
 
 local function loop()
     tips.save_data()
-    minetest.after(60, loop)
+    core.after(60, loop)
 end
 
-minetest.after(60 + math.random(), loop)
-minetest.register_on_shutdown(function()
+core.after(60 + math.random(), loop)
+core.register_on_shutdown(function()
     tips.save_data()
 end)
